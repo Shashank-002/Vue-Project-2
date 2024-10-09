@@ -1,5 +1,5 @@
 import { ref, computed } from "vue";
-import blogsData from "./data/data.json";
+import blogsData from "./data.json";
 
 export default function useMicroBlog() {
   const blogs = ref(blogsData);
