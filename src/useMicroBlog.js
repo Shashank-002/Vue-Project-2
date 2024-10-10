@@ -2,10 +2,11 @@ import { ref, computed } from "vue";
 import blogsData from "./data.json";
 
 export default function useMicroBlog() {
-  const blogs = ref(blogsData);
-  const searchQuery = ref("");
-  const selectedTag = ref("");
+  const blogs = ref(blogsData); 
+  const searchQuery = ref(""); 
+  const selectedTag = ref(""); 
 
+  // Filter blogs based on search query or selected hashtag
   const filteredBlogs = computed(() => {
     let filtered = blogs.value;
 
@@ -46,6 +47,6 @@ export default function useMicroBlog() {
     filteredBlogs,
     filterBlogs,
     filterBlogsByTag,
-    likeBlogPost,
+    likeBlogPost
   };
 }

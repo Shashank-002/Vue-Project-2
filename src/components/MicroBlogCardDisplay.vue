@@ -79,6 +79,7 @@ hr {
     font-weight: bold;
     font-size: 1.2rem;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .likes {
@@ -102,5 +103,11 @@ hr {
 
 .likes span:hover .heart-icon {
     color: #ff6b6b;
+}
+
+@media (max-width:1024px) {
+    .card {
+        margin: 20px auto;
+    }
 }
 </style>

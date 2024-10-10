@@ -1,27 +1,39 @@
 <template>
-  <div class="hashtag-container">
+  <div class="hashtag-search">
     <label for="hashtag">Search Hashtag: #</label>
-    <input v-model="searchQuery" @input="filterByHashtag" type="text" id="hashtag" placeholder="Search Hashtag">
+    <input v-model="searchQuery" @input="filterByHashtag" type="text" id="hashtag" placeholder="Search Hashtag" />
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    selectedHashtag: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
-      searchQuery: ''
+      searchQuery: this.selectedHashtag
     };
+  },
+  watch: {
+    selectedHashtag(newHashtag) {
+      this.searchQuery = newHashtag;
+    }
   },
   methods: {
     filterByHashtag() {
-      this.$emit('search-hashtag', this.searchQuery);
+      this.$emit('search-hashtag', this.searchQuery.trim());
     }
   }
 }
 </script>
 
+
 <style scoped>
-.hashtag-container {
+.hashtag-search {
   text-align: left;
   margin-left: 20px;
 }
@@ -46,7 +58,7 @@ input {
     width: 115px;
   }
 
-  .hashtag-container {
+  .hashtag-search {
     margin-left: 102px;
   }
 
@@ -54,10 +66,11 @@ input {
 
 @media (max-width:430px) {
   input {
-    width: 120px;
+    width: 100px;
+    font-size: 16px
   }
 
-  .hashtag-container {
+  .hashtag-search {
     text-align: center;
     margin-left: 0px;
   }

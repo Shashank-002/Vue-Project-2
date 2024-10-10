@@ -1,24 +1,21 @@
 <template>
   <div id="app">
-    <BlogHastagSearch @search-hashtag="filterBlogs" />
-    <div class="blog-list">
-      <MicroBlogCardDisplay v-for="blog in filteredBlogs" :key="blog.id" :blog="blog" @select-tag="filterBlogsByTag"
-        @like-blog="likeBlogPost" />
-    </div>
+    <BlogHastagSearch :selectedHashtag="selectedTag" @search-hashtag="filterBlogs" />
+    <HashtagCardView
+      :filtered-blogs="filteredBlogs"
+      :selected-hashtag="selectedTag"
+      @select-tag="filterBlogsByTag"
+      @like-blog="likeBlogPost"
+    />
   </div>
 </template>
 
 <script setup>
-import MicroBlogCardDisplay from './components/MicroBlogCardDisplay.vue';
-import BlogHastagSearch from './components/BlogHastagSearch.vue'
-import useMicroBlog from '../src/useMicroBlog';
+import BlogHastagSearch from './components/BlogHastagSearch.vue';
+import HashtagCardView from './components/HashtagCardView.vue';
+import useMicroBlog from './useMicroBlog';
 
-const {
-  filteredBlogs,
-  filterBlogs,
-  filterBlogsByTag,
-  likeBlogPost
-} = useMicroBlog();
+const { filteredBlogs, filterBlogs, filterBlogsByTag, likeBlogPost, selectedTag } = useMicroBlog();
 </script>
 
 <style>
@@ -27,7 +24,7 @@ const {
   flex-wrap: wrap;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .blog-list {
     justify-content: center;
   }
