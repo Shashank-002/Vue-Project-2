@@ -10,7 +10,7 @@
 import { ref } from 'vue';
 import BlogHastagSearch from './components/BlogHastagSearch.vue';
 import BlogCardView from './components/BlogCardView.vue';
-import useMicroBlog from './useMicroBlog';
+import useMicroBlog from './composable/useMicroBlog';
 
 const { filteredBlogs, filterBlogs, likeBlogPost } = useMicroBlog();
 
