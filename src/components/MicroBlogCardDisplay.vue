@@ -32,6 +32,7 @@ export default {
             this.$emit('like-blog', this.blog.id);
         }
     }
+
 }
 </script>
 

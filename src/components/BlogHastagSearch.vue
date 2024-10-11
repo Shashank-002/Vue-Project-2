@@ -40,7 +40,7 @@ export default {
 
 label {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 20px;
 }
 
 input {
@@ -53,21 +53,44 @@ input {
   border-bottom: 2px solid gray;
 }
 
-@media (max-width:768px) {
+@media (max-width:1024px) {
   input {
-    width: 115px;
+    width: 120px;
+  }
+
+  label {
+    font-size: 18px;
   }
 
   .hashtag-search {
-    margin-left: 102px;
+    margin-left: 35px;
+  }
+
+}
+
+@media (max-width:768px) {
+  input {
+    width: 120px;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  .hashtag-search {
+    margin-left: 55px;
   }
 
 }
 
 @media (max-width:430px) {
   input {
-    width: 100px;
-    font-size: 16px
+    width: 108px;
+    font-size: 14px;
+  }
+
+  label {
+    font-size: 16px;
   }
 
   .hashtag-search {
