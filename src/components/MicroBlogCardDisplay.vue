@@ -19,21 +19,22 @@
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        blog: Object
-    },
-    methods: {
-        selectHashtag(tag) {
-            this.$emit('select-tag', tag);
-        },
-        likeBlog() {
-            this.$emit('like-blog', this.blog.id);
-        }
-    }
+<script setup>
+import { defineProps, defineEmits } from 'vue'
 
-}
+const props = defineProps({
+    blog: Object
+});
+
+const emit = defineEmits(['select-tag', 'like-blog']);
+
+const selectHashtag = (tag) => {
+    emit('select-tag', tag);
+};
+
+const likeBlog = () => {
+    emit('like-blog', props.blog.id);
+};
 </script>
 
 <style scoped>

@@ -8,27 +8,23 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { defineProps, defineEmits } from 'vue';
 import MicroBlogCardDisplay from './MicroBlogCardDisplay.vue';
 
-export default {
-  props: {
-    filteredBlogs: Array,
-    selectedHashtag: String
-  },
-  components: {
-    MicroBlogCardDisplay
-  },
-  methods: {
-    filterBlogsByTag(tag) {
-      this.$emit('select-tag', tag);
-    },
+defineProps({
+  filteredBlogs: Array,
+});
 
-    likeBlogPost(blogId) {
-      this.$emit('like-blog', blogId);
-    }
-  }
-}
+const emit = defineEmits(['select-tag', 'like-blog']);
+
+const filterBlogsByTag = (tag) => {
+  emit('select-tag', tag)
+};
+
+const likeBlogPost = (blogId) => {
+  emit('like-blog', blogId)
+};
 </script>
 
 <style scoped>

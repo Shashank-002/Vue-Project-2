@@ -5,30 +5,27 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    selectedHashtag: {
-      type: String,
-      default: ''
-    }
-  },
-  data() {
-    return {
-      searchQuery: this.selectedHashtag
-    };
-  },
-  watch: {
-    selectedHashtag(newHashtag) {
-      this.searchQuery = newHashtag;
-    }
-  },
-  methods: {
-    filterByHashtag() {
-      this.$emit('search-hashtag', this.searchQuery.trim());
-    }
+<script setup>
+import { ref, watch } from 'vue'
+import { defineProps, defineEmits } from 'vue'
+
+const props = defineProps({
+  selectedHashtag: {
+    type: String,
+    default: ''
   }
-}
+});
+
+const emit = defineEmits(['search-hashtag']);
+const searchQuery = ref(props.selectedHashtag);
+
+watch(() => props.selectedHashtag, (newHashtag) => {
+  searchQuery.value = newHashtag;
+});
+
+const filterByHashtag = () => {
+  emit('search-hashtag', searchQuery.value.trim());
+};
 </script>
 
 
